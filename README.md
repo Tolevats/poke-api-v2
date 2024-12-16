@@ -1,24 +1,17 @@
-# s1-ec
+# Pokémon Guide Application
 
-## Project setup
-```
-npm install
-```
+## Overview
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+This project is a simple Vue.js application that allows users to search for Pokémon by name or ID. It utilizes the [PokéAPI](https://pokeapi.co/) to fetch Pokémon data and Vuex for state management.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Features
 
-### Lints and fixes files
-```
-npm run lint
-```
+- Search for Pokémon by name or ID.
+- Display Pokémon information including name, ID, abilities, and moves.
+- Responsive design with a user-friendly interface.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Technologies Used
+
+- Vue.js (Vue 2)
+- Vuex
+- CSS (for styling)
