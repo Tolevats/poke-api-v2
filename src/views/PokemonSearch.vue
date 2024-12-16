@@ -15,36 +15,32 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import PokemonCard from '@/components/PokemonCard.vue';
 import AppFooter from '@/components/AppFooter.vue';
 
 export default {
-    name: 'PokemonSearch',
-    // props: {},
-    data() {
-      return {
-        searchQuery: '',
-        pokemonData: null,
+  name: 'PokemonSearch',
+  data() {
+    return {
+      searchQuery: '',
     };
   },
-    methods: {
-    async fetchPokemon() {
-      const query = this.searchQuery.trim() || 'pikachu';
-      try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
-        if (!response.ok) throw new Error('Pokémon not found');
-        this.pokemonData = await response.json();
-      } catch (error) {
-        alert(error.message);
-        this.pokemonData = null;
-      }
+  computed: {
+    ...mapGetters(['pokemon']),
+    pokemonData() {
+      return this.pokemon; // Access Pokémon data from the store
     },
   },
-    // watch: {},
-    components: {
-        PokemonCard,
-        AppFooter,
+  methods: {
+    async fetchPokemon() {
+      await this.$store.dispatch('getPokemon', this.searchQuery); // Call the action to fetch Pokémon data
     },
+  },
+  components: {
+    PokemonCard,
+    AppFooter,
+  },
   created() {
     this.fetchPokemon(); //loads pikachu by default
   },
